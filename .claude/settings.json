@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(kotlinc defer.kt -include-runtime -d out.jar)",
+      "Bash(java -jar out.jar)"
+    ]
+  }
+}

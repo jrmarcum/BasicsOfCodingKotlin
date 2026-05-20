@@ -1,0 +1,33 @@
+fun main() {
+    val datePb = ProcessBuilder("cmd", "/c", "date", "/t")
+    val dateProc = datePb.start()
+    val dateOut = dateProc.inputStream.bufferedReader().readText()
+    dateProc.waitFor()
+    println("> date")
+    print(dateOut)
+
+    val failPb = ProcessBuilder("findstr", "NOMATCH_ZZZ")
+    failPb.redirectErrorStream(true)
+    val failProc = failPb.start()
+    failProc.outputStream.write("no match here\n".toByteArray())
+    failProc.outputStream.close()
+    failProc.inputStream.readBytes()
+    failProc.waitFor()
+    println("command exit rc = ${failProc.exitValue()}")
+
+    val grepPb = ProcessBuilder("findstr", "hello")
+    val grepProc = grepPb.start()
+    grepProc.outputStream.write("hello grep\ngoodbye grep\n".toByteArray())
+    grepProc.outputStream.close()
+    val grepOut = grepProc.inputStream.bufferedReader().readText()
+    grepProc.waitFor()
+    println("> grep hello")
+    print(grepOut)
+
+    val lsPb = ProcessBuilder("cmd", "/c", "dir", "/b")
+    val lsProc = lsPb.start()
+    val lsOut = lsProc.inputStream.bufferedReader().readText()
+    lsProc.waitFor()
+    println("> ls -a -l -h")
+    print(lsOut)
+}

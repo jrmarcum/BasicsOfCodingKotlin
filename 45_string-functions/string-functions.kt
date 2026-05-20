@@ -1,0 +1,16 @@
+fun main() {
+    println("Contains:   ${"test".contains("es")}")
+    println("Count:      ${"test".count { it == 't' }}")
+    println("HasPrefix:  ${"test".startsWith("te")}")
+    println("HasSuffix:  ${"test".endsWith("st")}")
+    println("Index:      ${"test".indexOf("e")}")
+    println("Join:       ${listOf("a", "b").joinToString("-")}")
+    println("Repeat:     ${"a".repeat(5)}")
+    println("Replace:    ${"foo".replace("o", "0")}")
+    println("Replace:    ${"foo".replaceFirst("o", "0")}")
+    println("Split:      ${"a-b-c-d-e".split("-").joinToString(" ", "[", "]")}")
+    println("ToLower:    ${"TEST".lowercase()}")
+    println("ToUpper:    ${"test".uppercase()}")
+    println("Len:  ${"hello".length}")
+    println("Char: ${"hello"[1].code}")
+}
